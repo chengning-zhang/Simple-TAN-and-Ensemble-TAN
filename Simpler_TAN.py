@@ -1,55 +1,27 @@
-class TAN_MT(Bayes_net):
-    def __init__(self, alpha = 1,starting_node = 0):
+class TAN(Bayes_net):
+    def __init__(self,Matrix,alpha = 1,starting_node = 0):
       self.starting_node = starting_node
       self.alpha = alpha
-      self.name = "TAN_MT"
-
+      self.name = "TAN"
+      self.M = Matrix
+      self.parent = self.Findparent() ## prim_time is not part from training,so I did not inlude it in training time
+      
+      """ training part"""
       self.Dict_C = []
       self.p = 0
       self.P_class_prior = []
       self.K = []
       self.C = 0
       self.countDict = []
-      self.parent = [] ### one more attribute than NB
 
       self._is_fitted = False
       """add training time """
       self.training_time = 0
-      self.mutual_inf_time = 0
-      self.prim_time = 0
       self.CP_time = 0
 
-    def To_CAT(self, X_i): 
-      """For using CMI purpose, convert X_i e.g ['a','b','a']/['0','1','0']  to [0,1,0].
-      :param X_i: one feature column. 
-      :return: list(type int)
-      """
-      X_i_list = list(set(X_i));X_i_dict = dict(zip(X_i_list, arange(len(X_i_list)) ))
-      return([X_i_dict[ele] for ele in X_i])
-
-    def get_mutual_inf(self,train):
-      """get conditional mutual inf of all pairs of features, part of training
-      :return: np.array matrix.
-      """
-      t = time.process_time()
-      p = len(train[0]) - 1
-      M = np.zeros((p,p))
-      Y = self.get_Y(train); Y = self.To_CAT(Y)
-      X = self.get_X(train)
-      for i in range(p):
-        X_i = [ele[i] for ele in X]
-        X_i = self.To_CAT(X_i)
-        for j in range(p):
-          X_j = [ele[j] for ele in X]; 
-          X_j = self.To_CAT(X_j)
-          M[i,j] = drv.information_mutual_conditional(X_i,X_j,Y)
-      
-      self.mutual_inf_time = time.process_time() - t
-      return M
-
-    def Findparent(self,train):
-      M = self.get_mutual_inf(train)
-      t = time.process_time()
+    
+    def Findparent(self):
+      M = self.M.copy()
       fill_diagonal(M,0)  
       p = int(M.shape[0])  
       V = range(p)  #### . set of all nodes
@@ -70,11 +42,9 @@ class TAN_MT(Bayes_net):
         Vnew.append(index_i[index1]) ### add in that node
         parent[index_i[index1]] = Vnew[index1] ## add direction, it has to be that the new added node is child, otherwise some nodes has 2 parents which is wrong.
       
-      self.prim_time = time.process_time() - t
       return parent
 
     def fit(self,train):  ### this is based on trainning data !!!
-      parent = self.Findparent(train)
       y = self.get_Y(train)
       t = time.process_time()
       """ start timing"""
@@ -97,22 +67,23 @@ class TAN_MT(Bayes_net):
           if c == C[0]:
             x_i = [ele[i] for ele in train]
             K[i] =len(Counter(x_i))
-          x_parent = [ele[parent[i]] for ele in train] ## will duplicate C times. 
+          x_parent = [ele[self.parent[i]] for ele in train] ## will duplicate C times. 
           x_parent_counter = Counter(x_parent)
           x_parent_counter_length = len(x_parent_counter)
           x_parent_value = list(x_parent_counter.keys())
           dict_i_c = {}
           for j in range(x_parent_counter_length):
-            x_i_c_p_j = [ele[i] for ele in train if ele[-1] == c and ele[parent[i]] == x_parent_value[j] ]
+            x_i_c_p_j = [ele[i] for ele in train if ele[-1] == c and ele[self.parent[i]] == x_parent_value[j] ]
             dict_i_c[x_parent_value[j]] = Counter(x_i_c_p_j) ### x_parent_value[j] can make sure it is right key.
           ListCounter_c[i] = dict_i_c
         Dict_C[c] = ListCounter_c 
 
       CP_time = time.process_time() - t
       self._is_fitted = True
-      self.Dict_C,self.p,self.P_class_prior,self.K,self.C,self.countDict, self.parent,self.CP_time = Dict_C,p,P_class,K,C,countDict,parent,CP_time
-      self.training_time = [self.mutual_inf_time,self.prim_time,self.CP_time]
+      self.Dict_C,self.p,self.P_class_prior,self.K,self.C,self.countDict,self.CP_time = Dict_C,p,P_class,K,C,countDict,CP_time
+      self.training_time = CP_time
       return self
+
 
     def predict(self,test):	
       """Predict prob values for test set for each class.
