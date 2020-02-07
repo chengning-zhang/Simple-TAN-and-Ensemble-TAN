@@ -67,6 +67,9 @@ P(C|a_1,...a_m) = \frac{P(C). \prod_1^m P(a_j|C) } { P(a_1,...a_m)}
 
 Naive Bayes is the simplest form of Bayesian network classifiers. It is obvious that the conditional independence assumption in Naive Bayes is rarely true in reality, which would harm its performance in the applications with complex attribute dependencies. Numerous algorithms have been proposed to improve Naive nayes by weakening its conditional attribute independence assumption, among which Tree augmented Naive Bayes TAN has demonstrated remarkable classification performance and is competitive with the general Bayesian network classifiers in terms of accuracy, while maintaining efficiency and simplicity.
 
+###### Time complexity of Naive Bayes
+
+
 #### Tree Augmented Naive Bayes
 In order to weaken the conditional independence assumption of Naive Bayes effectively, and an appropriate language and efficient machinery to represent the independence assertions are needed(cited). Unfortunately, it has been proved that learning an optimal Bayesian network is NP-hard(cited). In order to avoid the intractable complexity for learning Bayesian networks, we need to impose restrictions on structure of Bayesian network.
 
@@ -85,6 +88,7 @@ Output: the built TAN
 5. Build a TAN model by adding a node labeled by C and adding an arc from C to each A_i
 6. Return the built TAN
 ```
+###### Time complexity of TAN
 
 
 ## Simpler TAN + Ensemble TAN
