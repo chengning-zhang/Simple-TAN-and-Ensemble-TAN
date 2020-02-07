@@ -28,7 +28,13 @@ To rigorously investigate whether a classifier delievers better prediction perfo
 
 #### Evaluation Metrics
 Classification is one of the most important tasks in data mining, the predictive ability of a classifier is typically measured by its classification accuracy or error rate on the testing instances. However, evaluation of a classifier based purely on accuracy may suffer from the "Accuracy Paradox", For example, if the incidence of category A is dominant, being found in 99% of cases, then predicting that every case is category A will have an accuracy of 99%. To have a thorough and systematic investigation, Precision and recall should also be considered.
-In fact, probability-based classifiers can also produce probability estimates or "confidence" of the class prediction. Unfortunately, this information is often ignored in classification. 
+
+In fact, probability-based classifiers can also produce probability estimates or "confidence" of the class prediction. Unfortunately, this information is often ignored in classification. To further investigate the classification performance in terms of its class probability estimation, rather than just using the predicted classes information. Recently, conditional log likelihood, or simply CLL, has been used for this purpose and received a considerable attention.
+
+Given a classifier G and a set of test instances /T = {e_1,e_2,....e_t}/
+\(x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}\)
+
+
 
 
 
