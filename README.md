@@ -42,7 +42,7 @@ The rest of the paper is organized as follows. At first, we briefly review Bayes
 
 #### Bayesian Network
 A Bayesian network B = <N,A, \theta> is a directed acyclic graph (DAG) <N,A> with a conditional probability distribution (CP table) for each node, collectively represented by \theta. Each node n\in N represents an attibute, and each arc a\in A between nodes represents a probabilistic dependency. In general, a BN can be used to compute the conditional probability of one node, given values assigned to the other nodes; hence a BN can be used as a classifier that gives the posterial probability distrbution of the classification node given the values of other attributes.  
-
+In summary, BN can be viewed as a "data structure that provides the skeleton for representing a joint distribution compactly in a factorized way and a compact representation for a set of conditional independent assumptions about a distribution."(cited)
 
 #### Learning BN's
 The two major tasks in learning a BN are: learning the graphic structure; and then learning the parameters(CP table entries) for that structure. As it is trivial to learn the parameters for a given structure that are optimal for a given corpus of complete data -- simply use the emopirical conditional frequencies from the data(cited). We will focus on learning the BN structure. 
@@ -52,11 +52,8 @@ Second approach is to find the conditional independence relationships among the 
 
 Heckerman et al(1997) compare these two general learning and show that the scoring-based methods often have certain advantages over the CI-based methods, in terms of modeling a distribution. However, Friedman et al(1997) show theoretically that the scoring-based methods may result in poor classifiers since a good classifier maximize a different function. In summary, the scoring-based methods are often less useful in practice.
 
-
-
-
-
-
+The general problem of computing the joint posterial probabilities in BN is NP-hard(Cooper 1990). To reduce the complexity,
+Some restrictions need to be imposed on the level of interaction between attributes.
 #### Naive Bayes
 
 #### Tree Augmented Naive Bayes
