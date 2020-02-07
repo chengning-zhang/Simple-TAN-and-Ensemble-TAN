@@ -63,17 +63,16 @@ A Naive Bayes BN, is a simple structure that has the classification node as the 
 Naive Bayes has been used as an effective classifier for many years. 
 NB estimate class probability using:
 
-P(C|a_1,...a_m) = \frac{P(C). \prod_i^m P(a_j|C) } { P(a_1,...a_m)}
+P(C|a_1,...a_m) = \frac{P(C). \prod_1^m P(a_j|C) } { P(a_1,...a_m)}
 
 Naive Bayes is the simplest form of Bayesian network classifiers. It is obvious that the conditional independence assumption in Naive Bayes is rarely true in reality, which would harm its performance in the applications with complex attribute dependencies. Numerous algorithms have been proposed to improve Naive nayes by weakening its conditional attribute independence assumption, among which Tree augmented Naive Bayes TAN has demonstrated remarkable classification performance and is competitive with the general Bayesian network classifiers in terms of accuracy, while maintaining efficiency and simplicity.
 
-
-
-
-
-
-
 #### Tree Augmented Naive Bayes
+In order to weaken the conditional independence assumption of Naive Bayes effectively, and an appropriate language and efficient machinery to represent the independence assertions are needed(cited). Unfortunately, it has been proved that learning an optimal Bayesian network is NP-hard(cited). In order to avoid the intractable complexity for learning Bayesian networks, we need to impose restrictions on structure of Bayesian network.
+
+TAN is an extented tree-like Naive Bayes, in which the class node directly points to all attributes nodes and an attribute node only has at most one parent from another attribute node. TAN is a specific case of general Bayesian network classifiers, in which the class node also directly points to all attribute nodes(except that they do not form any directed cycle).
+Assume that A_1,A_2,...A_m are m attributes and C is the class variable, the learning algorithm of TAN is depicted as:
+
 
 
 
