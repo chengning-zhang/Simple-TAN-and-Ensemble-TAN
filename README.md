@@ -33,7 +33,10 @@ In fact, probability-based classifiers can also produce probability estimates or
 
 Given a classifier G and a set of test instances /T = {e_1,e_2,....e_t}/
 \(x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}\)
+```
+\\(x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}\\)
 
+```
 
 
 
