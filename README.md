@@ -45,6 +45,17 @@ A Bayesian network B = <N,A, \theta> is a directed acyclic graph (DAG) <N,A> wit
 
 
 #### Learning BN's
+The two major tasks in learning a BN are: learning the graphic structure; and then learning the parameters(CP table entries) for that structure. As it is trivial to learn the parameters for a given structure that are optimal for a given corpus of complete data -- simply use the emopirical conditional frequencies from the data(cited). We will focus on learning the BN structure. 
+
+There are two approaches to learning BN structure. First one is the scoring-based learning algorithms, that seek a structure that maximize the Bayesian, MDL or Kullback-Leibler(KL) entropy scoring function(cited).
+Second approach is to find the conditional independence relationships among the attributes and use these relationships as constraints to construct a BN. These algorithms are referred as CI-based algorithms(cited).
+
+Heckerman et al(1997) compare these two general learning and show that the scoring-based methods often have certain advantages over the CI-based methods, in terms of modeling a distribution. However, Friedman et al(1997) show theoretically that the scoring-based methods may result in poor classifiers since a good classifier maximize a different function. In summary, the scoring-based methods are often less useful in practice.
+
+
+
+
+
 
 #### Naive Bayes
 
