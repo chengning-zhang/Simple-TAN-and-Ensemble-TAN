@@ -21,8 +21,8 @@ However, to the best of our knowledge, there is currently no published method av
 
 As a concrete example which motivates this work, consider predicting the functionality of P450 and Lactamase from their amino acid sequence. 
 On account of protein's three-dimensional arrangement of atoms in an amino acid-chain molecule, Different positions in the amino acid sequence can be physically touching. To make the analysis simple, each sequence is divided into 8 blocks based on domain knowledge.
-The way the contact matrix is calculated is to add up all the positions within and between blocks that are physically touching. Therefore, the contact matrix would be a symmetric eight by eight matrix.
-Typically Researchers would ignore the contact matrix and build classifiers directly from amino acid sequence data using algorithms such as Logistic Regression, SVM, Naive Bayes and Neural network. However, Side information does provide useful knowledge in terms of the closeness among attributes, and this structure information may potentially imporve the classifier if used properly. 
+The way the contact matrix is calculated is to add up all the positions within and between blocks that are physically touching. Therefore, the contact matrix would be a symmetric eight by eight matrix. 
+Typically Researchers would ignore the contact matrix regardless of its accessibility and build classifiers directly from amino acid sequence data using algorithms such as Logistic Regression, SVM, Naive Bayes and Neural network. However, Side information does provide useful knowledge in terms of understanding the closeness and interdependence among attributes, and this structure information may potentially imporve the classifier if used properly. 
 
 
 
