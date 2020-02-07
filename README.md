@@ -21,7 +21,7 @@ However, to the best of our knowledge, there is currently no published method av
 
 As a concrete example which motivates this work, consider predicting the functionality of P450 and Lactamase from their amino acid sequence. 
 In light of protein's three-dimensional arrangement of atoms in an amino acid-chain molecule, different positions in the amino acid sequence can be physically touching. To make the analysis simple, each sequence is divided into 8 blocks based on domain knowledge.
-The way the contact matrix is calculated is to add up all the positions within and between blocks that are physically touching. Therefore, the contact matrix would be a symmetric eight by eight matrix. 
+The way the contact matrix is calculated is to add up all the positions within and between blocks that are physically touching. Therefore, the contact matrix would be a symmetric 8 by 8 matrix. 
 Typically Researchers would ignore the contact matrix regardless of its accessibility and build classifiers directly from amino acid sequence data using algorithms such as Logistic Regression, SVM, Naive Bayes and Neural network. However, Side information does provide useful knowledge in terms of understanding the closeness and interdependence among attributes, and this structure information may potentially imporve the classifier if used properly. 
 
 To rigorously investigate whether a classifier delievers better prediction performance after incorporating the side information, we need to first clarify evaluation metrics to be used. 
@@ -29,14 +29,14 @@ To rigorously investigate whether a classifier delievers better prediction perfo
 #### Evaluation Metrics
 Classification is one of the most important tasks in data mining, the predictive ability of a classifier is typically measured by its classification accuracy or error rate on the testing instances. However, evaluation of a classifier based purely on accuracy may suffer from the "Accuracy Paradox", For example, if the incidence of category A is dominant, being found in 99% of cases, then predicting that every case is category A will have an accuracy of 99%. To have a thorough and systematic investigation, Precision and recall should also be considered.
 
-In fact, probability-based classifiers can also produce probability estimates or "confidence" of the class prediction. Unfortunately, this information is often ignored in classification. To further investigate the classification performance in terms of its class probability estimation, rather than just using the predicted classes information. Recently, conditional log likelihood, or simply CLL, has been used for this purpose and received a considerable attention.
-
+In fact, probability-based classifiers can also produce probability estimates or "confidence" of the class prediction. Unfortunately, this information is often ignored in classification. A nature question is how to evaluate the classification performance in terms of its class probability estimation, rather than just using the predicted classes information. Recently, conditional log likelihood, or simply CLL, has been used for this purpose and received a considerable attention.
 Given a classifier G and a set of test instances T = {e_1,e_2,....e_t}, where t is the number of test instances. Let c_i be the true class label of e_i. Then the conditional log likelihood CLL(G|T) of the classifier G on the test set T is defined as:
 
 CLL(G|T) = \sum_i^t log(P_{G} (c_i|e_i))
 
 Let e represented by an attribute vector <a_1, a_2,....a_m> be a test instance and the true class label of it be c, then we can use the built classifier G to estimate the probability that e belongs to c. This resulting probability is generally called predicted probability denoted by \hat(G)(c|e). Now we can see that the classifiers with higher CLL tend to have better class probability estimation performance. In this work, we use all evaluation metrics mentioned to have a thorough understanding of classifier performance.
 
+The rest of the paper is organized as follows. At first, we briefly review Bayesian Network framework upon which our new method to incorporate side information is based. Then, we present our new algorithms respectively Simpler TAN and Ensemble TAN and provide theoretical time efficiency guarantee. Followed by the description of our experiments and results in detail. and SHAP is applied to obtain attributes importance scores. Lastly we draw conclusions.
 
 ## Framework
 
