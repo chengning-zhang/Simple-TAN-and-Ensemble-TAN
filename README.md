@@ -17,8 +17,12 @@ One particularly popular research is to apply Machine-learning approaches predic
 
 Usually generating millions of biological sequences from a library for a protein or enzyme requires heavy workload, because proteins are large biomolecules, or macromolecules, consisting of one or more long chains of amino acid residues. 
 In contrast, contact matrix, which shows the physical touching within and between blocks in the amino acid sequence, is easily accessible. It would be preferred if we can improve machine learning model by incorporating this cheap side information.
-However, There is currently no published method available to leverage the contact matrix information to build a classifier for predicting the functionality of proteins from their amino acid sequence, and it is not cystal clear whether the efforts needed are worthwhile. 
+However, to the best of our knowledge, there is currently no published method available to leverage the contact matrix information to build a classifier for predicting the functionality of proteins from their amino acid sequence, and it is not cystal clear whether the efforts needed are worthwhile. 
 
+As a concrete example which motivates this work, consider predicting the functionality of P450 and Lactamase from their amino acid sequence. 
+On account of protein's three-dimensional arrangement of atoms in an amino acid-chain molecule, Different positions in the amino acid sequence can be physically touching. To make the analysis simple, each sequence is divided into 8 blocks based on domain knowledge.
+The way the contact matrix is calculated is to add up all the positions within and between blocks that are physically touching.
+Therefore, the contact matrix would be a symmetric eight by eight matrix.
 
 
 
