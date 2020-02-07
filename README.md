@@ -32,7 +32,9 @@ Classification is one of the most important tasks in data mining, the predictive
 In fact, probability-based classifiers can also produce probability estimates or "confidence" of the class prediction. Unfortunately, this information is often ignored in classification. To further investigate the classification performance in terms of its class probability estimation, rather than just using the predicted classes information. Recently, conditional log likelihood, or simply CLL, has been used for this purpose and received a considerable attention.
 
 Given a classifier G and a set of test instances T = {e_1,e_2,....e_t}, where t is the number of test instances. Let c_i be the true class label of e_i. Then the conditional log likelihood CLL(G|T) of the classifier G on the test set T is defined as:
+
 CLL(G|T) = \sum_i^t log(P_{G} (c_i|e_i))
+
 Let e represented by an attribute vector <a_1, a_2,....a_m> be a test instance and the true class label of it be c, then we can use the built classifier G to estimate the probability that e belongs to c. This resulting probability is generally called predicted probability denoted by \hat(G)(c|e). Now we can see that the classifiers with higher CLL tend to have better class probability estimation performance. In this work, we use all evaluation metrics mentioned to have a thorough understanding of classifier performance.
 
 
