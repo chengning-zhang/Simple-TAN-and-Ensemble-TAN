@@ -72,9 +72,19 @@ In order to weaken the conditional independence assumption of Naive Bayes effect
 
 TAN is an extented tree-like Naive Bayes, in which the class node directly points to all attributes nodes and an attribute node only has at most one parent from another attribute node. TAN is a specific case of general Bayesian network classifiers, in which the class node also directly points to all attribute nodes(except that they do not form any directed cycle).
 Assume that A_1,A_2,...A_m are m attributes and C is the class variable, the learning algorithm of TAN is depicted as:
-
-
-
+```
+_____________________________________________
+Algorithm TAN(D)
+---------------------------------------------
+Input: a training instance set D
+Output: the built TAN
+1. compute the conditional mutual information I(A_i;A_j|C) between each pair of attributes, i \neq j
+2. Build a complete undirected graph in which nodes are attributes A_1,...A_m. Annotate the weight of an edge connecting A_i to A_j by I(A_i;A_j|C).
+3. Build a complete undirected maximum weighted spanning tree.
+4. Transform the built undirected tree to a directed one by randomly choosing a root attribute and setting the direction of all edges to be outward from it. 
+5. Build a TAN model by adding a node labeled by C and adding an arc from C to each A_i
+6. Return the built TAN
+```
 
 
 ## Simpler TAN + Ensemble TAN
