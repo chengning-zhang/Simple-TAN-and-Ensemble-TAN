@@ -41,6 +41,8 @@ The rest of the paper is organized as follows. At first, we briefly review Bayes
 ## Framework
 
 #### Bayesian Network
+A Bayesian network B = <N,A, \theta> is a directed acyclic graph (DAG) <N,A> with a conditional probability distribution (CP table) for each node, collectively represented by \theta. Each node n\in N represents an attibute, and each arc a\in A between nodes represents a probabilistic dependency. In general, a BN can be used to compute the conditional probability of one node, given values assigned to the other nodes; hence a BN can be used as a classifier that gives the posterial probability distrbution of the classification node given the values of other attributes.  
+
 
 #### Learning BN's
 
