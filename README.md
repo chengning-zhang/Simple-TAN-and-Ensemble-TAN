@@ -4,15 +4,25 @@ Bayesian network implementation API inspired by SciKit-learn.
 # Incorporating Contact Matrix Information Using Bayesian Network Into Protein Sequence Analysis 
 
 ## Abstract:
-In biological systems engineering, unlike the heavy workload of generating millions of biological sequences from a library for a protein or enzyme, contact matrix, which shows the physical touching within and between blocks in the amino acid sequence, is easily accessible . 
+In biological systems engineering, unlike the heavy workload of generating millions of biological sequences from a library for a protein or enzyme, contact matrix, which shows the physical touching within and between blocks in the amino acid sequence, is easily accessible. 
 However, It is not crystal clear how to leverage the contact matrix to build a classifier for predicting the functionality of proteins from their amino acid sequence. 
 In this paper, we present a new approach(simpler TAN) to incorporating the contact matrix based on Bayesian network framework. Theoretical study shows that our new algorithm has substantially improved computational efficiency relative to traditional TAN. In extensive experiments this technique delivers comparable or better prediction performance to NB and TAN in terms of different evaluation metrics. To further improve the classification performance and its stability without sacrificing computational efficiency, We propose another algorithm called Ensemble TAN. Finally, SHAP values are calculated to obtain feature importance scores to help us better understand the model. 
 
 *Keywords:* Contact matrix, Bayesian network, Protein Sequence Analysis, Classifcation, SHAP
   
 ## Introduction
-
 #### Motivation
+Proteins perform a vast array of functions within organisms and they differ from one another primarily in their sequence of amino acids. Understanding the relationship between functionality of protein and their amino acid sequence has been of great interest to researchers. 
+One particularly popular research is to apply Machine-learning approaches predicting how sequence maps to function in a data-driven manner without requiring a detailed model of the underlying physics or biological pathways.
+
+Usually generating millions of biological sequences from a library for a protein or enzyme usually requires heavy workload, because proteins are large biomolecules, or macromolecules, consisting of one or more long chains of amino acid residues. 
+In contrast, contact matrix, which shows the physical touching within and between blocks in the amino acid sequence, is easily accessible. It would be 
+However, There is currently no published method available to leverage the contact matrix information to build a classifier for predicting the functionality of proteins from their amino acid sequence, and it is not cystal clear whether the efforts needed are worthwhile. 
+
+
+
+
+
 
 #### Prior Work and Our Contribution
 
