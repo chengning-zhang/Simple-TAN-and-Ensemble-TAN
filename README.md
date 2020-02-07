@@ -32,12 +32,7 @@ Classification is one of the most important tasks in data mining, the predictive
 In fact, probability-based classifiers can also produce probability estimates or "confidence" of the class prediction. Unfortunately, this information is often ignored in classification. To further investigate the classification performance in terms of its class probability estimation, rather than just using the predicted classes information. Recently, conditional log likelihood, or simply CLL, has been used for this purpose and received a considerable attention.
 
 Given a classifier G and a set of test instances /T = {e_1,e_2,....e_t}/
-\(x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}\)
-```
-\\(x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}\\)
-
-```
-
+<img src="http://latex.codecogs.com/gif.latex?\frac{\partial J}{\partial \theta_k^{(j)}}=\sum_{i:r(i,j)=1}{\big((\theta^{(j)})^Tx^{(i)}-y^{(i,j)}\big)x_k^{(i)}}+\lambda \theta_k^{(j)}" />
 
 
 
