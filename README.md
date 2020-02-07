@@ -45,7 +45,7 @@ A Bayesian network B = <N,A, \theta> is a directed acyclic graph (DAG) <N,A> wit
 
 In summary, BN can be viewed as a "data structure that provides the skeleton for representing a joint distribution compactly in a factorized way and a compact representation for a set of conditional independent assumptions about a distribution."(cited). In order to build a classifcation model, we need to determine the joint distribution of all the attributes conditioned on class. The formula is given by ,
 
-P(C|a_1,...a_m) = \frac{P(C). P(a_1,...a_m)}{P(a_1,...a_m)}
+P(C|a_1,...a_m) = \frac{P(C). P(a_1,...a_m|C)}{P(a_1,...a_m)}
 
 The general problem of computing the joint posterial probabilities in BN is NP-hard(Cooper 1990). To reduce the complexity,
 Some restrictions need to be imposed on the level of interaction between attributes.
@@ -58,9 +58,20 @@ Second approach is to find the conditional independence relationships among the 
 
 Heckerman et al(1997) compare these two general learning and show that the scoring-based methods often have certain advantages over the CI-based methods, in terms of modeling a distribution. However, Friedman et al(1997) show theoretically that the scoring-based methods may result in poor classifiers since a good classifier maximize a different function. In summary, the scoring-based methods are often less useful in practice.
 
-
-
 #### Naive Bayes
+A Naive Bayes BN, is a simple structure that has the classification node as the parent node of all other nodes. No other connections are allowed in a Naive-Bayes structure.
+Naive Bayes has been used as an effective classifier for many years. 
+NB estimate class probability using:
+
+P(C|a_1,...a_m) = \frac{P(C). \prod_i^m P(a_j|C) } { P(a_1,...a_m)}
+
+Naive Bayes is the simplest form of Bayesian network classifiers. It is obvious that the conditional independence assumption in Naive Bayes is rarely true in reality, which would harm its performance in the applications with complex attribute dependencies. Numerous algorithms have been proposed to improve Naive nayes by weakening its conditional attribute independence assumption, among which Tree augmented Naive Bayes TAN has demonstrated remarkable classification performance and is competitive with the general Bayesian network classifiers in terms of accuracy, while maintaining efficiency and simplicity.
+
+
+
+
+
+
 
 #### Tree Augmented Naive Bayes
 
