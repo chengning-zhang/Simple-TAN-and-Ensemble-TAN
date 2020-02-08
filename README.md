@@ -68,6 +68,15 @@ P(C|a_1,...a_m) = \frac{P(C). \prod_1^m P(a_j|C) } { P(a_1,...a_m)}
 Naive Bayes is the simplest form of Bayesian network classifiers. It is obvious that the conditional independence assumption in Naive Bayes is rarely true in reality, which would harm its performance in the applications with complex attribute dependencies. Numerous algorithms have been proposed to improve Naive nayes by weakening its conditional attribute independence assumption, among which Tree augmented Naive Bayes TAN has demonstrated remarkable classification performance and is competitive with the general Bayesian network classifiers in terms of accuracy, while maintaining efficiency and simplicity.
 
 ###### Time complexity of Naive Bayes
+Remember the two major tasks in learning a BN are: learning the graphic structure; and then learning the parameters(CP table entries) for that structure. As for Naive Bayes the structure is already given, therefore, the only computation intensive step involved is the conditional probability calculation for all attributes.
+Let C be the total number of class labels in the dataset. Let m be the total number of attributes and {S_1,...S_m} be the total number of values that each attribute can take respectively and R be the number of instances in the training dataset.
+Note that by using appropriate data structure, counting the number of occurrences of each of the class labels and attributes states can be done in one single scan, which takes O(R).
+To calculate the entries of the CP table, we need to find the probability of occurences of every state of all attributes conditioned on each of the class labels. Hence total values computed:
+
+\sum_1^m R.C.S_i \leq R.C.m.S_max
+Thus, the complexity of training the classifier is given by m.C.S_max.R. 
+After training, the conditional probabilities are stored and can be retrieved during the process of classification in constant time. 
+
 
 
 #### Tree Augmented Naive Bayes
@@ -88,7 +97,27 @@ Output: the built TAN
 5. Build a TAN model by adding a node labeled by C and adding an arc from C to each A_i
 6. Return the built TAN
 ```
+
+TAN estimate class probability using:
+
+P(C|a_1,...a_m) = \frac{ P(C). P(root|C).\prod_{j \neq root} P(a_j|C,parent(a_j) ) } { P(a_1,...a_m)}
+
 ###### Time complexity of TAN
+The computation intensive steps involved in training TAN model are: Calculation of conditional mutual information, implementation of Prim algorithm to build the complete undirected maximum weighted spanning tree and calculation of entries in the CP table. The first two computational steps are for learning the graphic structure while the last step is for learning the parameters given the structure. 
+
+*Conditional Mutual information:* the total number of pairs for m attributes is \frac{m(m-1)}{2}. For each of the pairs, we need to calculate the probabilities of all combinations of all the states that each attrbute can take conditioned on each of the class labels. Hence the time complexity of calculating conditional mutual information: 
+\frasc{(m(m-1))}{2}.S_max ^2.C.R
+
+*Prim algorithm:* The time complexity of Prim's algorithm depends on the data structures used for the graph, in our work we use adjacency matrix, the time complexity is O(m^2).
+
+*CP Table:* The number of operations for each conditional probability differs slightly from NB. In TAN we need to find the conditional probability of each of attributes conditional on its parent and class. Hence, the time complexity in this step:
+m.S_max ^2.C.R
+
+It can be observed that the complexity of training TAN is highly influenced by conditional mutual information computation. 
+"Mutual information tests often take more 95% of the running time of the BN learning process"(Jie Cheng 2013)
+
+
+
 
 
 ## Simpler TAN + Ensemble TAN
