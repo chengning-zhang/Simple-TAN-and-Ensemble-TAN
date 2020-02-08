@@ -11,7 +11,7 @@ In this paper, we present a new approach(simpler TAN) to incorporating the conta
 *Keywords:* Contact matrix, Bayesian network, Protein Sequence Analysis, Classifcation, SHAP
   
 ## Introduction
-#### Motivation
+### Motivation
 Proteins perform a vast array of functions within organisms and they differ from one another primarily in their sequence of amino acids. Understanding the relationship between functionality of protein and their amino acid sequence has been of great interest to researchers. 
 One particularly popular research is to apply Machine-learning approaches predicting how sequence maps to function in a data-driven manner without requiring a detailed model of the underlying physics or biological pathways.
 
@@ -26,7 +26,7 @@ Typically Researchers would ignore the contact matrix regardless of its accessib
 
 To rigorously investigate whether a classifier delievers better prediction performance after incorporating the side information, we need to first clarify evaluation metrics to be used. 
 
-#### Evaluation Metrics
+### Evaluation Metrics
 Classification is one of the most important tasks in data mining, the predictive ability of a classifier is typically measured by its classification accuracy or error rate on the testing instances. However, evaluation of a classifier based purely on accuracy may suffer from the "Accuracy Paradox", For example, if the incidence of category A is dominant, being found in 99% of cases, then predicting that every case is category A will have an accuracy of 99%. To have a thorough and systematic investigation, Precision and recall should also be considered.
 
 In fact, probability-based classifiers can also produce probability estimates or "confidence" of the class prediction. Unfortunately, this information is often ignored in classification. A nature question is how to evaluate the classification performance in terms of its class probability estimation, rather than just using the predicted classes information. Recently, conditional log likelihood, or simply CLL, has been used for this purpose and received a considerable attention.
@@ -40,7 +40,7 @@ The rest of the paper is organized as follows. At first, we briefly review Bayes
 
 ## Framework
 
-#### Bayesian Network
+### Bayesian Network
 A Bayesian network B = <N,A, \theta> is a directed acyclic graph (DAG) <N,A> with a conditional probability distribution (CP table) for each node, collectively represented by \theta. Each node n\in N represents an attibute, and each arc a\in A between nodes represents a probabilistic dependency. In general, a BN can be used to compute the conditional probability of one node, given values assigned to the other nodes; hence a BN can be used as a classifier that gives the posterial probability distrbution of the classification node given the values of other attributes.  
 
 In summary, BN can be viewed as a "data structure that provides the skeleton for representing a joint distribution compactly in a factorized way and a compact representation for a set of conditional independent assumptions about a distribution."(cited). In order to build a classifcation model, we need to determine the joint distribution of all the attributes conditioned on class. The formula is given by ,
@@ -50,7 +50,7 @@ P(C|a_1,...a_m) = \frac{P(C). P(a_1,...a_m|C)}{P(a_1,...a_m)}
 The general problem of computing the joint posterial probabilities in BN is NP-hard(Cooper 1990). To reduce the complexity,
 Some restrictions need to be imposed on the level of interaction between attributes.
 
-#### Learning BN's
+### Learning BN's
 The two major tasks in learning a BN are: learning the graphic structure; and then learning the parameters(CP table entries) for that structure. As it is trivial to learn the parameters for a given structure that are optimal for a given corpus of complete data -- simply use the emopirical conditional frequencies from the data(cited). We will focus on learning the BN structure. 
 
 There are two approaches to learning BN structure. First one is the scoring-based learning algorithms, that seek a structure that maximize the Bayesian, MDL or Kullback-Leibler(KL) entropy scoring function(cited).
@@ -58,7 +58,7 @@ Second approach is to find the conditional independence relationships among the 
 
 Heckerman et al(1997) compare these two general learning and show that the scoring-based methods often have certain advantages over the CI-based methods, in terms of modeling a distribution. However, Friedman et al(1997) show theoretically that the scoring-based methods may result in poor classifiers since a good classifier maximize a different function. In summary, the scoring-based methods are often less useful in practice.
 
-#### Naive Bayes
+### Naive Bayes
 A Naive Bayes BN, is a simple structure that has the classification node as the parent node of all other nodes. No other connections are allowed in a Naive-Bayes structure.
 Naive Bayes has been used as an effective classifier for many years. 
 NB estimate class probability using:
@@ -67,19 +67,20 @@ P(C|a_1,...a_m) = \frac{P(C). \prod_1^m P(a_j|C) } { P(a_1,...a_m)}
 
 Naive Bayes is the simplest form of Bayesian network classifiers. It is obvious that the conditional independence assumption in Naive Bayes is rarely true in reality, which would harm its performance in the applications with complex attribute dependencies. Numerous algorithms have been proposed to improve Naive nayes by weakening its conditional attribute independence assumption, among which Tree augmented Naive Bayes TAN has demonstrated remarkable classification performance and is competitive with the general Bayesian network classifiers in terms of accuracy, while maintaining efficiency and simplicity.
 
-###### Time complexity of Naive Bayes
+##### Time complexity of Naive Bayes
 Remember the two major tasks in learning a BN are: learning the graphic structure; and then learning the parameters(CP table entries) for that structure. As for Naive Bayes the structure is already given, therefore, the only computation intensive step involved is the conditional probability calculation for all attributes.
 Let C be the total number of class labels in the dataset. Let m be the total number of attributes and {S_1,...S_m} be the total number of values that each attribute can take respectively and R be the number of instances in the training dataset.
 Note that by using appropriate data structure, counting the number of occurrences of each of the class labels and attributes states can be done in one single scan, which takes O(R).
 To calculate the entries of the CP table, we need to find the probability of occurences of every state of all attributes conditioned on each of the class labels. Hence total values computed:
 
 \sum_1^m R.C.S_i \leq R.C.m.S_max
+
 Thus, the complexity of training the classifier is given by m.C.S_max.R. 
 After training, the conditional probabilities are stored and can be retrieved during the process of classification in constant time. 
 
 
 
-#### Tree Augmented Naive Bayes
+### Tree Augmented Naive Bayes
 In order to weaken the conditional independence assumption of Naive Bayes effectively, and an appropriate language and efficient machinery to represent the independence assertions are needed(cited). Unfortunately, it has been proved that learning an optimal Bayesian network is NP-hard(cited). In order to avoid the intractable complexity for learning Bayesian networks, we need to impose restrictions on structure of Bayesian network.
 
 TAN is an extented tree-like Naive Bayes, in which the class node directly points to all attributes nodes and an attribute node only has at most one parent from another attribute node. TAN is a specific case of general Bayesian network classifiers, in which the class node also directly points to all attribute nodes(except that they do not form any directed cycle).
@@ -102,7 +103,7 @@ TAN estimate class probability using:
 
 P(C|a_1,...a_m) = \frac{ P(C). P(root|C).\prod_{j \neq root} P(a_j|C,parent(a_j) ) } { P(a_1,...a_m)}
 
-###### Time complexity of TAN
+##### Time complexity of TAN
 The computation intensive steps involved in training TAN model are: Calculation of conditional mutual information, implementation of Prim algorithm to build the complete undirected maximum weighted spanning tree and calculation of entries in the CP table. The first two computational steps are for learning the graphic structure while the last step is for learning the parameters given the structure. 
 
 *Conditional Mutual information:* the total number of pairs for m attributes is \frac{m(m-1)}{2}. For each of the pairs, we need to calculate the probabilities of all combinations of all the states that each attrbute can take conditioned on each of the class labels. Hence the time complexity of calculating conditional mutual information: 
@@ -122,10 +123,10 @@ It can be observed that the complexity of training TAN is highly influenced by c
 
 ## Simpler TAN + Ensemble TAN
 
-#### Simpler TAN
+### Simpler TAN
 
 
-#### Ensemble TAN
+### Ensemble TAN
 
 ## Experiments and results
 
