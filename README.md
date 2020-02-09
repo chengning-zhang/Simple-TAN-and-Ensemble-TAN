@@ -169,11 +169,50 @@ Note that TAN employs a data-driven manner to learn the graphic structure wherea
 *CP Table:* In Simpler TAN we need to find the conditional probability of each of attributes conditional on its parent and class. Hence, the time complexity in this step:
 m.S_max ^2.C.R
 
-
 ### Ensemble TAN
+We can take a step further in incorporating the contact matrix information. Again using a Bayesian point of view, contact matrix is the prior belief about the interdependence among attributes, It is preferred if one can updata the prior based on the training data. In the context of learning the Bayesian network, it means that it is preferred if one can use both the contact matrix and conditional mutual information to build the tree structure Bayesian network. For that purpose, We present Ensemble TAN which leverage both the prior belief(contact matrix) and information learned from training data. 
 
+Ensemble TAN build m+1 base classifiers, The first classifier is the Simpler TAN which is shown in previous section.
+For building the other m base classifiers, We respectively choose each attribute as the root of the tree to directly build a complete directed maximum weighted spanning tree and then construct a TAN using each built tree. At the test time, Ensemble TAN estimates the class-membership probabilities using each built base classifier, and then the estimated class-membership probabilities are averaged. Thus, the whole algorithm of Ensemble TAN can be partitioned into a training algorithm and a test algorithm. They are depicted below respectively. 
 
+```
+_____________________________________________
+Algorithm Ensemble TAN training(D)
+---------------------------------------------
+Input: a training instance set D
+Output: Simpler TAN, TAN1,TAN2,...TANm
+For Simpler TAN:
+   1. Obtain the contact matrix M from domain expert.
+   2. Build a complete undirected graph in which nodes are attributes A_1,...A_m. Annotate the weight of an edge connecting         A_i to A_j by M_{i,j}.
+   3. Build a complete undirected maximum weighted spanning tree.
+   4. Transform the built undirected tree to a directed one by randomly choosing a root attribute and setting the direction of       all edges to be outward from it. 
+   5. Build a Simpler TAN model by adding a node labeled by C and adding an arc from C to each A_i
+   6. Return the built model Simpler TAN
+  
+For TAN1,....TANm:
+  1. Compute the conditional mutual information I(A_i;A_j|C) between each pair of attributes, i \neq j.
+  2. For each attribute A_i(i = 1,2,...m):
+     (a) Choose A_i as the root node to build a complete directed maximum weighted spanning tree. Annotate the weight of an            edge connecting A_i to A_j by I(A_i;A_j|C).
+     (b) Build TAN_i by adding a node labeled by C and adding an arc from C to each attribute A_i.
 
+  3. Return the built TAN_1,...TAN_m
+  
+Return Simpler TAN, TAN_1,....TAN_m
+ ``` 
+
+```
+_____________________________________________
+Algorithm Ensemble TAN test(Simpler TAN, TAN_1,...TAN_m,e)
+---------------------------------------------
+Input: The built Simpler TAN, TAN_1,...TAN_m and a test instance e
+Output: The probabilities \hat{P(c1|e)},.... \hat{P(c_C|e)}
+1. For each class label c_p (p = 1,2,....C)
+    (a) For each base classifier, use each one to estimate the probability \hat{P(c_p|e)} that e belongs to class c_p
+    (b) Average all of the probabilities \hat{P(c_p|e)} = \frac{1}{m+1} \sum_0^m \hat{P((c_p|e))}
+2. return the estimated \hat{P(c1|e)},.... \hat{P(c_C|e)}
+```
+Notice that Ensemble TAN does not need to build the complete undirected maximum weighted spanning tree and the choosing of the root attribute is prior to the process of building the complete directed maximum weighted spanning tree. 
+For each base learner in Ensemble TAN, the tree structure is different thus they predict different class probabilities, which meets exactly the need of the ensemble learning. The experimental results show that our Ensemble TAN significantly outperforms the original TAN and Naive Bayes indeed. Note that if the contact matrix is not available, Ensemble TAN can still be used by omitting Simpler TAN and training other m TAN base learners.
 
 
 
