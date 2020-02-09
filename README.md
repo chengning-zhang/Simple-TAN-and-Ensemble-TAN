@@ -158,9 +158,24 @@ Output: the built Simpler TAN
 6. Return the built model
 ```
 
+Simpler TAN estimate class probability using:
+
+P(C|a_1,...a_m) = \frac{ P(C). P(root|C).\prod_{j \neq root} P(a_j|C,parent(a_j) ) } { P(a_1,...a_m)}
+
+##### Time complexity of Simpler TAN
+
+Note that TAN employs a data-driven manner to learn the graphic structure whereas Simpler TAN achieves this in a data-invariant manner. Therefore, it only takes contant time for Simpler TAN to build the tree structure. The only computation intensive step involved in training Simpler TAN model is the calculation of entries in the CP table. 
+
+*CP Table:* In Simpler TAN we need to find the conditional probability of each of attributes conditional on its parent and class. Hence, the time complexity in this step:
+m.S_max ^2.C.R
 
 
 ### Ensemble TAN
+
+
+
+
+
 
 ## Experiments and results
 
