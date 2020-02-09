@@ -215,9 +215,22 @@ Even though Ensemble TAN needs training m+1 base learner, it can be easily paral
 
 
 ## Experiments and results
+The purpose of these experiments is to investigate the classification performance of TAN, Simpler TAN and Ensemble TAN in terms of all evaluation metrics discussed before. 
+
+We run our experiments on P450 and Lactamase protein datasets where the contact matrix information is available. Other datasets are also tried where we do not have the contact matrix. It is preferred that the attributes are continuous otherwise discretization needs to be implemented and information may be losing. 
+
+In our experiments, all evaluation metrics of each algorithm on each data set are obtained via 10 runs of 10-fold cross-validation. Runs with the various algorithms are carried out on the same training sets and evaluated on the same test sets.
+To make the evaluation thorough, both K-fold and stratified K-fold are implemented to split the data. 
+
 
 
 ## Conclusions
+
+In many real-world applications, contact matrix, which shows the prior belief about the interdependence among attributes, is easily accessible. However,  It is not crystal clear how to leverage the contact matrix information to improve the classifier.
+In this paper, we propose two new algorithms to incorporate the contact matrix and experimentally investigate their performance in terms of different evaluation metrics.
+We found that Simpler TAN requires less training time relative to TAN with comparative performance, and Ensemble TAN outperforms other Bayesian Classifiers significantly.
+The new algorithms are writen in python inspired by scikit-learn class. All the code is avaible at Github. 
+
 
 
 
