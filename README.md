@@ -82,4 +82,11 @@ Output: The probabilities \hat{P(c1|e)},.... \hat{P(c_C|e)}
 
 
 
+## SHAP
+
+![P450_shap_NB](/P450_nb_shap.png)
+
+Format: ![Alt Text](url)
+
+
 
