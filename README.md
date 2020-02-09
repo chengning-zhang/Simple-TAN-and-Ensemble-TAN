@@ -46,7 +46,7 @@ P(C|a_1,...a_m) = \frac{ P(C). P(root|C).\prod_{j \neq root} P(a_j|C,parent(a_j)
 
 
 ## Ensemble TAN
-``
+```
 _____________________________________________
 Algorithm Ensemble TAN training (D,M)
 ---------------------------------------------
@@ -66,6 +66,7 @@ For TAN1,....TANm:
   
 Return Simpler TAN, TAN_1,....TAN_m
 ``` 
+
 
 ```
 _____________________________________________
