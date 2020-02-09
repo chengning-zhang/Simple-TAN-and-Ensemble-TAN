@@ -140,12 +140,7 @@ In summary, using conditional mutual information to investigate the interdepende
 This is where the contact matrix comes in, because the contact matrix potentially shows the "inherent" interdependence among atrributes, whereas conditional mutual information tries to achieve the same goal in a data-driven manner. 
 Therefore, if contact matrix is used directly to build the tree structure in the Bayesian network, then the most computationally intensive step in TAN can be omitted.   
 
-
-
-
-bayeisan view, prior. 
-
-
+A Bayesian view of contact matrix is that, we can think of it as a prior brief on the interdependence among attributes based on expert knowledge or reality. In this way, contact matrix information can be incorporated into classifie, we call this algorthim Simpler TAN. 
 
 ### Simpler TAN
 
