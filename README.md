@@ -140,9 +140,24 @@ In summary, using conditional mutual information to investigate the interdepende
 This is where the contact matrix comes in, because the contact matrix potentially shows the "inherent" interdependence among atrributes, whereas conditional mutual information tries to achieve the same goal in a data-driven manner. 
 Therefore, if contact matrix is used directly to build the tree structure in the Bayesian network, then the most computationally intensive step in TAN can be omitted.   
 
-A Bayesian view of contact matrix is that, we can think of it as a prior brief on the interdependence among attributes based on expert knowledge or reality. In this way, contact matrix information can be incorporated into classifie, we call this algorthim Simpler TAN. 
+A Bayesian view of contact matrix is that, we can think of it as a prior brief on the interdependence among attributes based on expert knowledge or reality. In this way, contact matrix information can be incorporated into classifier, we call this algorthim Simpler TAN. 
 
 ### Simpler TAN
+
+```
+_____________________________________________
+Algorithm Simpler TAN(D)
+---------------------------------------------
+Input: a training instance set D
+Output: the built Simpler TAN
+1. Obtain the contact matrix M from domain expert.
+2. Build a complete undirected graph in which nodes are attributes A_1,...A_m. Annotate the weight of an edge connecting A_i to A_j by M_{i,j}.
+3. Build a complete undirected maximum weighted spanning tree.
+4. Transform the built undirected tree to a directed one by randomly choosing a root attribute and setting the direction of all edges to be outward from it. 
+5. Build a Simpler TAN model by adding a node labeled by C and adding an arc from C to each A_i
+6. Return the built model
+```
+
 
 
 ### Ensemble TAN
