@@ -120,7 +120,7 @@ It can be observed that the complexity of training TAN is highly influenced by c
 
 ## Simpler TAN + Ensemble TAN
 
-### Conditional Mutual Infortion VS Contact Matrix
+### Conditional Mutual Information VS Contact Matrix
 It has been proved that learning an optimal Bayesian network is NP-hard(cited). In order to avoid the intractable complexity for learning Bayesian networks, we need to impose restrictions on structure of Bayesian network. 
 Among numerous algorithms that has been proposed to contruct the Bayesian network structure, The tree-like structure restriction in TAN, is a good trade-off between the model complexity and model performance, therefore, in this work, we consider incorporating contact matrix information by imposing the same tree-like structure restriction in TAN.
 
@@ -129,7 +129,7 @@ A crucial step of learning the tree structure in TAN is to investigate the attri
 (a) The training time of TAN is highly dependent on conditional mutual information test, as is shown by analyzing the time complexity of TAN, and things get worse when we have large number of attributes features(curse of dimensionality).
 
 (b) Even though mutual information (MI) is singled out by its information theoretic background and it is sensitive also to dependencies which do not manifest themselves in the covariance, estimating Mutual Information can be difficult and inaccurate, especially when attributes are continuous. 
-For example, when estimating MI among continuous attributes, usually one need to partition the supports variables into bins of finite size, then use the estimator:
+For example, when estimating MI for continuous attributes X and Y, usually one need to partition the supports of X and Y into bins of finite size, then use the estimator:
 
 I(X,Y) \appr I_{binned}(X,Y) = \sum_{ij} p(i,j) log(\frac{p(i,j)}{p_x(i) p_y(j)})
 
@@ -137,6 +137,14 @@ Where X and Y are two continuous attributes in the training set.
 However, there is no generally accepted method to partition the supports and it makes the learning procedure of TAN more complicated. Furthermore, this estimator converges to true MI only when the sample size goes to infinity and all bin sizes goes to zero, which is hardly true in reality.
 
 In summary, using conditional mutual information to investigate the interdependence among attributes would not gurantee it learns the true relationship among attributes and it can be tedious and computationally intensive. 
+This is where the contact matrix comes in, because the contact matrix potentially shows the "inherent" interdependence among atrributes, whereas conditional mutual information tries to achieve the same goal in a data-driven manner. 
+Therefore, if contact matrix is used directly to build the tree structure in the Bayesian network, then the most computationally intensive step in TAN can be omitted.   
+
+
+
+
+bayeisan view, prior. 
+
 
 
 ### Simpler TAN
