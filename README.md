@@ -3,6 +3,9 @@ A custom implementation of Bayesian network written from scratch in Python 3, AP
 
 
 ## Naive Bayes
+From [Wikipedia](https://en.wikipedia.org/wiki/Naive_Bayes_classifier):
+
+> In machine learning, naive Bayes classifiers are a family of simple probabilistic classifiers based on applying Bayes' theorem with strong (naive) independence assumptions between the features.
 
 
 ## TAN
