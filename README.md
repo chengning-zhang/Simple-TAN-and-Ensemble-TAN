@@ -1,5 +1,5 @@
 # Simpler TAN + Ensemble TAN
-Bayesian network implementation API inspired by SciKit-learn.
+A custom implementation of Bayesian network written from scratch in Python 3, API inspired by SciKit-learn.
 
 
 ## Naive Bayes
