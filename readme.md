@@ -1,8 +1,5 @@
 # Simpler TAN + Ensemble TAN
 
-![](/images/tree_plot.png)
-
-
 A custom implementation of Bayesian network written from scratch in Python 3, API inspired by SciKit-learn. 
 This module implements 4 Bayesian classifiers: 
 * Naive Bayes
@@ -23,6 +20,8 @@ This module implements 4 Bayesian classifiers:
 ### Network Visualization
 - Naive Bayes - Tree-Augmented Naive Bayes - 
 - Simpler TAN - Ensemble TAN -
+![](/images/tree_plot.png)
+
 
 ### Cross Validation/Model Selection
 - Stratified K-fold CV-
@@ -32,6 +31,7 @@ This module implements 4 Bayesian classifiers:
 ### SHAP 
 - Feature importance scores-
 - Kernel Explaner-
+![](/P450_SATN_shap.png)
 
 ## Getting Started
 
