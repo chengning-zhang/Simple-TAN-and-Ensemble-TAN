@@ -20,7 +20,6 @@ This module implements 4 Bayesian classifiers:
 ### Network Visualization
 - Naive Bayes - Tree-Augmented Naive Bayes - 
 - Simpler TAN - Ensemble TAN -
-![](/images/tree_plot.png)
 
 
 ### Cross Validation/Model Selection
@@ -31,7 +30,6 @@ This module implements 4 Bayesian classifiers:
 ### SHAP 
 - Feature importance scores-
 - Kernel Explaner-
-![](/P450_SATN_shap.png)
 
 ## Getting Started
 
@@ -119,7 +117,7 @@ stan0.fit(X,y,M)
 stan0.plot_tree_structure()
 
 ```
-
+![](/images/tree_plot.png)
 
 
 ## Model explanation using SHAP
@@ -135,6 +133,7 @@ shap.summary_plot(shap_values1, X2, plot_type="bar")
 
 ```
 
+![](/P450_STAN_shap.png)
 
 
 
