@@ -24,11 +24,11 @@ This module implements 4 Bayesian classifiers:
 ### Cross Validation/Model Selection
 - Stratified K-fold CV-
 - K fold CV-
--Accuracy, Recall, Precision, Conditional log likelihood-
+- Accuracy, Recall, Precision, Conditional log likelihood-
 
 ### SHAP 
 - Feature importance scores-
--Kernel Explaner-
+- Kernel Explaner-
 
 ## Getting Started
 
