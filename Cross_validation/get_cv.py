@@ -1,9 +1,7 @@
-def get_cv(model,data,n_splits=10,cv_type = "KFold",verbose = True):  
-  """ Cross validation to get CLL and accuracy and training time.
-    :param data: data with dimension p+1 x n, to be cross validated.
-                         where n is the number of examples,
-                         and p is the number of features. Last column is target.   data has to be a list [[ ], [ ], [ ].... ]
-    :return CLL, accuracy, training time for each folds.
+import warnings
+warnings.filterwarnings("ignore")
+def get_cv(cls,X,Y,M,n_splits=10,cv_type = "KFold",verbose = True):  
+  """ Cross validation to get CLL and accuracy and training time and precision and recall.
   """
 
   if cv_type == "StratifiedKFold":
@@ -11,8 +9,9 @@ def get_cv(model,data,n_splits=10,cv_type = "KFold",verbose = True):
   else: 
     cv = KFold(n_splits=n_splits, shuffle=True, random_state=42)
   
-  X = np.array(model.get_X(data))## if data is array, then get_X return array. if data is list, get_X return list
-  Y = np.array(model.get_Y(data)) ### Y array['1','0','']
+
+  model = cls()
+  X,Y = check_X_y(X,Y)
   binarizer = MultiLabelBinarizer() ## for using recall and precision score
   binarizer.fit(Y)
   Accuracy = []
@@ -21,12 +20,13 @@ def get_cv(model,data,n_splits=10,cv_type = "KFold",verbose = True):
   CLL = []
   training_time = []
   for folder, (train_index, val_index) in enumerate(cv.split(X, Y)):#### X,Y are array, data is list
-    X_val = X[val_index]
-    y_val = Y[val_index] 
-    model.fit(data[train_index]) ### whether data is list or array does not matter, only thing matters is label has to be same.
-    y_pred_prob= model.predict(X_val)
-    training_time.append(model.training_time)  
-    y_pred_class = model.prob_to_class_general(y_pred_prob,model.C)
+    X_train,X_val = X[train_index],X[val_index]
+    y_train,y_val = Y[train_index],Y[val_index] 
+    model.fit(X_train,y_train,M) ### whether data is list or array does not matter, only thing matters is label has to be same.
+    training_time.append(model.training_time_)
+
+    y_pred_prob= model.predict_proba(X_val)  
+    y_pred_class = model.predict(X_val)
     accuracy = accuracy_score(y_val, y_pred_class)
     precision = precision_score(binarizer.transform(y_val), 
          binarizer.transform(y_pred_class), 
@@ -34,7 +34,7 @@ def get_cv(model,data,n_splits=10,cv_type = "KFold",verbose = True):
     recall = recall_score(binarizer.transform(y_val), 
          binarizer.transform(y_pred_class), 
          average='macro')
-    cll = model.Conditional_log_likelihood_general(y_val,y_pred_prob,model.C)
+    cll = model.Conditional_log_likelihood_general(y_val,y_pred_prob,model.classes_)
     if verbose:
         print("accuracy in %s fold is %s" % (folder+1,accuracy))
         print("CLL in %s fold is %s" % (folder+1,cll))
