@@ -133,7 +133,7 @@ shap.summary_plot(shap_values1, X2, plot_type="bar")
 
 ```
 
-![](/P450_STAN_shap.png)
+![](images/P450_STAN_shap.png)
 
 
 
