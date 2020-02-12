@@ -171,8 +171,8 @@ class NB(Bayes_net):
     Prob_C = np.array(Prob_C) ### for shap !!!!
     return Prob_C
 
- 
- class TAN(Bayes_net):
+
+class TAN(Bayes_net):
     name = "TAN"
     def __init__(self, alpha = 1,starting_node = 0):
       self.starting_node = starting_node
@@ -301,7 +301,6 @@ class NB(Bayes_net):
 
       Prob_C = np.array(Prob_C) ### for shap !!!!
       return Prob_C
-      
       
 class STAN(Bayes_net):
     name = "STAN"
@@ -475,7 +474,6 @@ class STAN_bagging(Bayes_net):
 
     Prob_C = Prob_C/self.p_
     return(Prob_C)
-
 
 
 class STAN_TAN_bagging(Bayes_net):
