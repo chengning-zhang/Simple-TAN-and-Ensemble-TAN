@@ -86,6 +86,17 @@ print(np.mean(np.array(training_time)))
 
 ```
 
+
+## Plot the tree-structure
+```
+stan0 = STAN(starting_node = 0)
+stan0.fit(X,y,M)
+stan0.plot_tree_structure()
+
+```
+
+
+
 ## Model explanation using SHAP
 
 ```
