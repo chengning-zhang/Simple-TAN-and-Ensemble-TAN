@@ -86,6 +86,22 @@ print(np.mean(np.array(training_time)))
 
 ```
 
+## Model explanation using SHAP
+
+```
+nb = NB()
+nb.fit(lactamase)
+explainer1 = shap.KernelExplainer(nb.predict_binary, X2[0:50,], link="logit")
+shap_values1 = explainer1.shap_values(X2,nsamples = 20)
+
+shap.summary_plot(shap_values1, X2)
+shap.summary_plot(shap_values1, X2, plot_type="bar")
+
+```
+
+
+
+
 ## Built With
 
 * [Dropwizard](https://scikit-learn.org/stable/modules/classes.html) - scikit-learn API
