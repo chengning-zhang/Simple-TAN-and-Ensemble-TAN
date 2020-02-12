@@ -7,6 +7,28 @@ This module implements 4 Bayesian classifiers:
 * Simpler TAN
 * Ensemble TAN
 
+## Current features
+
+### Tree-Based Structure Learning
+- Naive Bayes - Tree-Augmented Naive Bayes - Chow-Liu
+- Simpler TAN - Ensemble TAN - Chengning Zhang
+
+### Multi-class Classification
+- Naive Bayes - Tree-Augmented Naive Bayes - 
+- Simpler TAN - Ensemble TAN -
+
+### Network Visualization
+- Naive Bayes - Tree-Augmented Naive Bayes - 
+- Simpler TAN - Ensemble TAN -
+
+### Cross Validation/Model Selection
+- Stratified K-fold CV-
+- K fold CV-
+-Accuracy, Recall, Precision, Conditional log likelihood-
+
+### SHAP 
+- Feature importance scores-
+-Kernel Explaner-
 
 ## Getting Started
 
