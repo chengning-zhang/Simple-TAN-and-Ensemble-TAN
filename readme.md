@@ -92,6 +92,33 @@ print(stan_tan_bag.predict_proba(X))
 stan_tan_bag.score(X,y)
 ```
 
+## Model Selection(Hyper-parameter tuning)
+One can choose the best smoothing parameter.
+
+```
+import warnings
+warnings.filterwarnings("ignore")
+from sklearn.model_selection import GridSearchCV
+from sklearn.metrics import make_scorer
+import pandas as pd
+stan = STAN()
+stan.get_params()
+parameters = {'alpha':[1,2,3]}#,'starting_node':[0,1,2]}
+"""scorers = {
+    'precision_score': make_scorer(precision_score),
+    'recall_score': make_scorer(recall_score),
+    'accuracy_score': make_scorer(accuracy_score)#,
+    #'Conditional log likelihood': make_scorer(nb.Conditional_log_likelihood_general,C)
+}"""
+clf = GridSearchCV(stan, parameters,cv =10)
+
+clf.fit(X,y,M = M) 
+pd.DataFrame(clf.cv_results_)
+```
+
+
+
+
 ## Get cross validation
 
 
