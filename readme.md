@@ -39,7 +39,7 @@ This module is dependent on scikit-learn library. Make sure scikit-learn is prop
 
 Install sklearn, SHAP, pyitlib
 
-```
+```javascript
 pip install sklearn
 pip install SHAP
 pip install pyitlib
@@ -48,7 +48,7 @@ pip install pyitlib
 ### Installing
 
 
-```
+```javascript
 Give the example
 ```
 
@@ -62,7 +62,7 @@ until finished
 
 Toy example on Naive Bayes
 
-```
+```javascript
 import numpy as np
 Y = np.array([1, 1, 1, 2, 2, 2])
 X = np.array([[-1, -1], [-2, -1], [-3, -2], [1, 1], [2, 1], [3, 2]])
@@ -78,7 +78,7 @@ nb.score(X,y)
 
 Toy example on Ensemble TAN
 
-```
+```javascript
 import numpy as np
 Y = np.array([1, 1, 1, 2, 2, 2])
 X = np.array([[-1, -1], [-2, -1], [-3, -2], [1, 1], [2, 1], [3, 2]])
@@ -95,7 +95,7 @@ stan_tan_bag.score(X,y)
 ## Model Selection(Hyper-parameter tuning)
 One can choose the best smoothing parameter.
 
-```
+```javascript
 import warnings
 warnings.filterwarnings("ignore")
 from sklearn.model_selection import GridSearchCV
@@ -122,7 +122,7 @@ pd.DataFrame(clf.cv_results_)
 ## Get cross validation
 
 
-```
+```javascript
 import get_cv
 
 Y = np.array([1, 1, 1, 2, 2, 2])
@@ -138,7 +138,7 @@ print(np.mean(np.array(training_time)))
 
 
 ## Plot the tree-structure
-```
+```javascript
 stan0 = STAN(starting_node = 0)
 stan0.fit(X,y,M)
 stan0.plot_tree_structure()
@@ -149,7 +149,7 @@ stan0.plot_tree_structure()
 
 ## Model explanation using SHAP
 
-```
+```javascript
 nb = NB()
 nb.fit(lactamase)
 explainer1 = shap.KernelExplainer(nb.predict_binary, X2[0:50,], link="logit")
