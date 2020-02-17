@@ -22,8 +22,20 @@ def readData2(filename):
 		returnData.append(lineList)###['3','2',...]
 	return returnData
   
-  
-  
+def readData3(filename):
+	fr = open(filename)
+	returnData = []
+	for line in fr.readlines():
+		lineList = line.strip().split(',')
+		returnData.append(lineList)###['3','2',...]
+	return returnData
+
+nurse = readData3("data folder/nursery.data")
+nurse.pop()
+nurse = np.array(nurse) 
+	
+	
+	
 def readarff(filename):
   arrfFile = open(filename)
   lines = [line.rstrip('\n') for line in arrfFile]
