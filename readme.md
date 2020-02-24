@@ -1,7 +1,6 @@
 
 # Simpler TAN + Ensemble TAN
 
---------------------------------------------------------------------------------
 
 A custom implementation of Bayesian network written from scratch in Python 3, API inspired by SciKit-learn. 
 This module implements 4 Bayesian classifiers: 
