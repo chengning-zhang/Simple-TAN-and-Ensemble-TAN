@@ -1,7 +1,6 @@
 # Simpler TAN + Ensemble TAN
-![Bayes Logo](https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn.dribbble.com%2Fusers%2F142857%2Fscreenshots%2F1948344%2Flogo-dark.png&imgrefurl=https%3A%2F%2Fdribbble.com%2Fshots%2F1948344-AI-ML-Company-Logo&tbnid=YkJWVdBt3oY7_M&vet=12ahUKEwjJpZ7hz-nnAhUZzawKHQIeDXUQMygAegUIARDNAQ..i&docid=AAFXs9FUA6WEQM&w=800&h=600&q=bayes%20logo&ved=2ahUKEwjJpZ7hz-nnAhUZzawKHQIeDXUQMygAegUIARDNAQ)
+![](/images/logo_bayes.png)
 
---------------------------------------------------------------------------------
 
 A custom implementation of Bayesian network written from scratch in Python 3, API inspired by SciKit-learn. 
 This module implements 4 Bayesian classifiers: 
