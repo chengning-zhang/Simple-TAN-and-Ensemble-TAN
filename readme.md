@@ -1,5 +1,5 @@
 
-![](/images/logo_transparent.png)
+![](/images/pinterest_profile_image.png)
 
 --------------------------------------------------------------------------------
 
