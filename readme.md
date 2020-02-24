@@ -1,5 +1,5 @@
-# Simpler TAN + Ensemble TAN
-![](/images/logo_bayes.png)
+
+![](/images/)
 
 
 A custom implementation of Bayesian network written from scratch in Python 3, API inspired by SciKit-learn. 
