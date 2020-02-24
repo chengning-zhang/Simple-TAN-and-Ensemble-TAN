@@ -7,6 +7,9 @@ This module implements 4 Bayesian classifiers:
 * Simpler TAN
 * Ensemble TAN
 
+Note that Naive Bayes has been incorporated into Sklearn module, while Tree-augmented Naive bayes not. 
+Our Naive Bayes classifier is same as sklearn.naive_bayes.CategoricalNB, which requires all features be categorical.
+
 ## Current features
 
 ### Tree-Based Structure Learning
