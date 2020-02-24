@@ -1,5 +1,5 @@
 
-![](/images/pinterest_profile_image.png)
+# Simpler TAN + Ensemble TAN
 
 --------------------------------------------------------------------------------
 
