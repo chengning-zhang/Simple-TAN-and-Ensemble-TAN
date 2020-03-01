@@ -3,10 +3,10 @@
 
 A custom implementation of Bayesian network written from scratch in Python 3, API inspired by SciKit-learn. 
 This module implements 4 Bayesian classifiers: 
-* [Naive Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html)
-* [TAN](http://www.cs.technion.ac.il/~dang/journal_papers/friedman1997Bayesian.pdf)
-* [Simpler TAN](https://github.com/chengning-zhang/Simple-TAN-and-Ensemble-TAN)
-* [Ensemble TAN](https://github.com/chengning-zhang/Simple-TAN-and-Ensemble-TAN)
+* [Naive Bayes(NB)](https://scikit-learn.org/stable/modules/naive_bayes.html)
+* [Tree-Augmented Naive Bayes(TAN)](http://www.cs.technion.ac.il/~dang/journal_papers/friedman1997Bayesian.pdf)
+* [Simpler TAN(STAN)](https://github.com/chengning-zhang/Simple-TAN-and-Ensemble-TAN)
+* [Ensemble TAN(ETAN)](https://github.com/chengning-zhang/Simple-TAN-and-Ensemble-TAN)
 
 Note that Naive Bayes has been incorporated into Sklearn module, while Tree-augmented Naive bayes not. 
 Our Naive Bayes classifier is same as sklearn.naive_bayes.CategoricalNB, which requires all features be categorical.
