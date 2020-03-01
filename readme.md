@@ -1,13 +1,12 @@
-
 # Simpler TAN + Ensemble TAN
 
 
 A custom implementation of Bayesian network written from scratch in Python 3, API inspired by SciKit-learn. 
 This module implements 4 Bayesian classifiers: 
-* Naive Bayes
-* TAN
-* Simpler TAN
-* Ensemble TAN
+* [Naive Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html)
+* [TAN](http://www.cs.technion.ac.il/~dang/journal_papers/friedman1997Bayesian.pdf)
+* [Simpler TAN](https://github.com/chengning-zhang/Simple-TAN-and-Ensemble-TAN)
+* [Ensemble TAN](https://github.com/chengning-zhang/Simple-TAN-and-Ensemble-TAN)
 
 Note that Naive Bayes has been incorporated into Sklearn module, while Tree-augmented Naive bayes not. 
 Our Naive Bayes classifier is same as sklearn.naive_bayes.CategoricalNB, which requires all features be categorical.
@@ -36,32 +35,6 @@ Our Naive Bayes classifier is same as sklearn.naive_bayes.CategoricalNB, which r
 - Feature importance scores-
 - Kernel Explaner-
 
-## Getting Started
-
-This module is dependent on scikit-learn library. Make sure scikit-learn is properly installed.
-
-### Prerequisites
-
-Install sklearn, SHAP, pyitlib
-
-```javascript
-pip install sklearn
-pip install SHAP
-pip install pyitlib
-```
-
-### Installing
-
-
-```javascript
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
 
 ## Using classifiers
 
@@ -175,8 +148,6 @@ shap.summary_plot(shap_values1, X2, plot_type="bar")
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 
-## Contributing
-
 
 ## Versioning
 
@@ -184,7 +155,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Chengning Zhang** - *Initial work* - [PurpleBooth](https://github.com/)
+* **Chengning Zhang** - *Initial work* - [Simpler TAN + Ensemble TAN](https://github.com/chengning-zhang/Simple-TAN-and-Ensemble-TAN)
 
 ## License
 
