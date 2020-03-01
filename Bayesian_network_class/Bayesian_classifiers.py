@@ -1,3 +1,10 @@
+#!/usr/bin/env python
+#-*- coding:utf-8 -*-
+"""
+Created on Mar 1, 2020
+@author: Chengning Zhang
+"""
+
 from __future__ import division ###for float operation
 from collections import Counter
 import numpy as np
@@ -20,13 +27,13 @@ from sklearn.utils.validation import check_X_y, check_array, check_is_fitted ###
 
 
 
-"""
-Bayesian network implementation
-API inspired by SciKit-learn.
-"""
+
 
 class Bayes_net(BaseEstimator, ClassifierMixin): 
-    
+    """
+    Bayesian network implementation
+    API inspired by SciKit-learn.
+    """
     def fit(self,X,y,M = None):
       raise NotImplementedError
 
