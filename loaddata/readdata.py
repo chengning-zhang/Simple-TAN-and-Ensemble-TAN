@@ -1,4 +1,9 @@
-
+#!/usr/bin/env python
+#-*- coding:utf-8 -*-
+"""
+Created on Mar 1, 2020
+@author: Chengning Zhang
+"""
 
 def readData(filename):
 	fr = open(filename)
