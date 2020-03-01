@@ -1,3 +1,10 @@
+#!/usr/bin/env python
+#-*- coding:utf-8 -*-
+"""
+Created on Mar 1, 2020
+@author: Chengning Zhang
+"""
+
 import warnings
 warnings.filterwarnings("ignore")
 def get_cv(cls,X,Y,M,n_splits=10,cv_type = "KFold",verbose = True):  
